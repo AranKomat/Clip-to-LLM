@@ -1,0 +1,20 @@
+<svg width="128" height="128" xmlns="http://www.w3.org/2000/svg">
+  <!-- Background -->
+  <rect width="128" height="128" rx="24" fill="#1976d2"/>
+
+  <!-- Clipboard icon -->
+  <rect x="32" y="24" width="64" height="80" rx="8" fill="white"/>
+  <rect x="44" y="16" width="40" height="16" rx="4" fill="#90caf9"/>
+
+  <!-- Arrow pointing right -->
+  <path d="M 72 52 L 88 64 L 72 76 L 72 68 L 52 68 L 52 60 L 72 60 Z" fill="#1976d2"/>
+
+  <!-- LLM text indicator (small dots representing text) -->
+  <circle cx="48" cy="40" r="2" fill="#1976d2"/>
+  <circle cx="56" cy="40" r="2" fill="#1976d2"/>
+  <circle cx="64" cy="40" r="2" fill="#1976d2"/>
+
+  <circle cx="48" cy="88" r="2" fill="#1976d2"/>
+  <circle cx="56" cy="88" r="2" fill="#1976d2"/>
+  <circle cx="64" cy="88" r="2" fill="#1976d2"/>
+</svg>

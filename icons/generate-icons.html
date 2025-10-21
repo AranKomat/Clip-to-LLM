@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Generate Icons</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      padding: 20px;
+      max-width: 800px;
+      margin: 0 auto;
+    }
+    canvas {
+      border: 1px solid #ccc;
+      margin: 10px;
+    }
+    .icon-set {
+      margin: 20px 0;
+    }
+    button {
+      padding: 10px 20px;
+      margin: 5px;
+      font-size: 14px;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+  <h1>Icon Generator for Clip-to-LLM</h1>
+  <p>Click the buttons below to download each icon size.</p>
+
+  <div class="icon-set">
+    <h2>16x16</h2>
+    <canvas id="canvas16" width="16" height="16"></canvas>
+    <button onclick="downloadIcon(16)">Download icon16.png</button>
+  </div>
+
+  <div class="icon-set">
+    <h2>48x48</h2>
+    <canvas id="canvas48" width="48" height="48"></canvas>
+    <button onclick="downloadIcon(48)">Download icon48.png</button>
+  </div>
+
+  <div class="icon-set">
+    <h2>128x128</h2>
+    <canvas id="canvas128" width="128" height="128"></canvas>
+    <button onclick="downloadIcon(128)">Download icon128.png</button>
+  </div>
+
+  <script>
+    function drawIcon(canvas) {
+      const ctx = canvas.getContext('2d');
+      const size = canvas.width;
+      const scale = size / 128;
+
+      ctx.clearRect(0, 0, size, size);
+
+      // Background
+      ctx.fillStyle = '#1976d2';
+      roundRect(ctx, 0, 0, size, size, 24 * scale);
+      ctx.fill();
+
+      // Clipboard body
+      ctx.fillStyle = 'white';
+      roundRect(ctx, 32 * scale, 24 * scale, 64 * scale, 80 * scale, 8 * scale);
+      ctx.fill();
+
+      // Clipboard clip
+      ctx.fillStyle = '#90caf9';
+      roundRect(ctx, 44 * scale, 16 * scale, 40 * scale, 16 * scale, 4 * scale);
+      ctx.fill();
+
+      // Arrow
+      ctx.fillStyle = '#1976d2';
+      ctx.beginPath();
+      ctx.moveTo(72 * scale, 52 * scale);
+      ctx.lineTo(88 * scale, 64 * scale);
+      ctx.lineTo(72 * scale, 76 * scale);
+      ctx.lineTo(72 * scale, 68 * scale);
+      ctx.lineTo(52 * scale, 68 * scale);
+      ctx.lineTo(52 * scale, 60 * scale);
+      ctx.lineTo(72 * scale, 60 * scale);
+      ctx.closePath();
+      ctx.fill();
+
+      // Dots
+      ctx.fillStyle = '#1976d2';
+      [48, 56, 64].forEach(x => {
+        ctx.beginPath();
+        ctx.arc(x * scale, 40 * scale, 2 * scale, 0, Math.PI * 2);
+        ctx.fill();
+
+        ctx.beginPath();
+        ctx.arc(x * scale, 88 * scale, 2 * scale, 0, Math.PI * 2);
+        ctx.fill();
+      });
+    }
+
+    function roundRect(ctx, x, y, width, height, radius) {
+      ctx.beginPath();
+      ctx.moveTo(x + radius, y);
+      ctx.lineTo(x + width - radius, y);
+      ctx.quadraticCurveTo(x + width, y, x + width, y + radius);
+      ctx.lineTo(x + width, y + height - radius);
+      ctx.quadraticCurveTo(x + width, y + height, x + width - radius, y + height);
+      ctx.lineTo(x + radius, y + height);
+      ctx.quadraticCurveTo(x, y + height, x, y + height - radius);
+      ctx.lineTo(x, y + radius);
+      ctx.quadraticCurveTo(x, y, x + radius, y);
+      ctx.closePath();
+    }
+
+    function downloadIcon(size) {
+      const canvas = document.getElementById('canvas' + size);
+      canvas.toBlob(blob => {
+        const url = URL.createObjectURL(blob);
+        const a = document.createElement('a');
+        a.href = url;
+        a.download = `icon${size}.png`;
+        a.click();
+        URL.revokeObjectURL(url);
+      });
+    }
+
+    // Draw all icons on load
+    window.onload = () => {
+      drawIcon(document.getElementById('canvas16'));
+      drawIcon(document.getElementById('canvas48'));
+      drawIcon(document.getElementById('canvas128'));
+    };
+  </script>
+</body>
+</html>
