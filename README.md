@@ -37,23 +37,30 @@ A Chrome extension that intelligently captures web content and sends it to ChatG
 
 ## Keyboard Shortcuts
 
+### Default Shortcuts (Pre-configured)
+
 | Shortcut | Action | Description |
 |----------|--------|-------------|
 | `Ctrl+Shift+C` | Save Smart | Queue current page using smart detection |
 | `Ctrl+Shift+V` | Quick Send | Capture + send to ChatGPT (no auto-send) |
-| `Ctrl+Shift+X` | Custom Send 1 | Capture + send with "Explain:" prompt (auto-send) |
-| `Ctrl+Shift+Z` | Custom Send 2 | Capture + send with "Translate:" prompt (auto-send) |
 | `Ctrl+Shift+S` | Summary | Capture + send with "Summarize:" prompt (auto-send) |
-| `Ctrl+Shift+F` | Copy Text | Force text capture (ignores smart defaults) |
 | `Ctrl+Shift+D` | Screenshot | Capture visible area as screenshot |
 
 *Note: On Mac, use `Cmd` instead of `Ctrl`*
 
-### Customizing Shortcuts
+### Additional Actions (Configure shortcuts manually or use popup buttons)
 
+Chrome limits extensions to 4 pre-configured shortcuts. Additional actions are available via:
+
+**Popup Buttons**: Click the extension icon and use the Quick Action buttons:
+- **Explain** - Capture + send with "Explain:" prompt
+- **Translate** - Capture + send with "Translate:" prompt
+- **Copy Text** - Force text capture (ignores smart defaults)
+
+**Manual Shortcuts**: You can assign custom shortcuts to these actions:
 1. Go to `chrome://extensions/shortcuts`
 2. Find "Clip-to-LLM"
-3. Click the pencil icon to customize any shortcut
+3. Configure shortcuts for "Custom Quick Send 1", "Custom Quick Send 2", and "Copy page text"
 
 ## Usage
 

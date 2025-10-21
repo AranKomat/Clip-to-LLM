@@ -59,20 +59,6 @@
       },
       "description": "Quick Send (capture + send to ChatGPT)"
     },
-    "custom-send-1": {
-      "suggested_key": {
-        "default": "Ctrl+Shift+X",
-        "mac": "Command+Shift+X"
-      },
-      "description": "Custom Quick Send 1 (Explain)"
-    },
-    "custom-send-2": {
-      "suggested_key": {
-        "default": "Ctrl+Shift+Z",
-        "mac": "Command+Shift+Z"
-      },
-      "description": "Custom Quick Send 2 (Translate)"
-    },
     "summary-send": {
       "suggested_key": {
         "default": "Ctrl+Shift+S",
@@ -80,19 +66,21 @@
       },
       "description": "Summary Quick Send"
     },
-    "copy-page-text": {
-      "suggested_key": {
-        "default": "Ctrl+Shift+F",
-        "mac": "Command+Shift+F"
-      },
-      "description": "Copy page text"
-    },
     "screenshot": {
       "suggested_key": {
         "default": "Ctrl+Shift+D",
         "mac": "Command+Shift+D"
       },
       "description": "Screenshot (visible area)"
+    },
+    "custom-send-1": {
+      "description": "Custom Quick Send 1 (Explain) - Set shortcut in chrome://extensions/shortcuts"
+    },
+    "custom-send-2": {
+      "description": "Custom Quick Send 2 (Translate) - Set shortcut in chrome://extensions/shortcuts"
+    },
+    "copy-page-text": {
+      "description": "Copy page text - Set shortcut in chrome://extensions/shortcuts"
     }
   },
   "options_page": "options.html",

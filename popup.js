@@ -7,6 +7,11 @@ document.addEventListener('DOMContentLoaded', async () => {
   document.getElementById('clearQueue').addEventListener('click', clearQueue);
   document.getElementById('openSettings').addEventListener('click', openSettings);
   document.getElementById('viewAllShortcuts').addEventListener('click', showShortcuts);
+
+  // Quick action buttons
+  document.getElementById('explainBtn').addEventListener('click', () => triggerCommand('custom-send-1'));
+  document.getElementById('translateBtn').addEventListener('click', () => triggerCommand('custom-send-2'));
+  document.getElementById('copyTextBtn').addEventListener('click', () => triggerCommand('copy-page-text'));
 });
 
 async function loadQueue() {
@@ -109,4 +114,15 @@ function escapeHtml(text) {
   const div = document.createElement('div');
   div.textContent = text;
   return div.innerHTML;
+}
+
+async function triggerCommand(command) {
+  // Send message to background to trigger command
+  await chrome.runtime.sendMessage({
+    action: 'triggerCommand',
+    command
+  });
+
+  // Close popup
+  window.close();
 }

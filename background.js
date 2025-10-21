@@ -446,6 +446,31 @@ chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
     queueManager.removeItem(message.index).then(sendResponse);
     return true;
   }
+
+  if (message.action === 'triggerCommand') {
+    // Get current tab and trigger the command
+    chrome.tabs.query({ active: true, currentWindow: true }, async (tabs) => {
+      if (tabs[0]) {
+        await handleCommand(message.command, tabs[0]);
+      }
+    });
+    return true;
+  }
 });
+
+// Helper function to handle command routing
+async function handleCommand(command, tab) {
+  switch (command) {
+    case 'custom-send-1':
+      await handleCustomSend(tab, 1);
+      break;
+    case 'custom-send-2':
+      await handleCustomSend(tab, 2);
+      break;
+    case 'copy-page-text':
+      await handleCopyPageText(tab);
+      break;
+  }
+}
 
 console.log('Clip-to-LLM background service worker loaded');
